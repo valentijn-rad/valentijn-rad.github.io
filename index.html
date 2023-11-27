@@ -9,8 +9,9 @@
 <script src="./script.js"></script>
 <body>
 <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
-    <a-camera gps-new-camera='gpsMinDistance: 1'></a-camera>
-    <a-entity material='color: green' geometry='primitive: box' gps-new-entity-place="latitude: 52.0447107; longitude: 4.3372833" scale="10 10 10"></a-entity>
+    <a-camera gps-new-camera='gpsMinDistance: 3'></a-camera>
+    <a-entity material='color: green' geometry='primitive: sphere' gps-new-entity-place="latitude: 52.0447107; longitude: 4.3372833" scale="10 10 10"></a-entity>
+    <a-text look-at="[gps-new-camera]" scale="" value="Home" align="center" text="Home"></a-text>
 </a-scene>
 </body>
 </html>
