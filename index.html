@@ -1,18 +1,86 @@
 <!DOCTYPE html>
-<html>
+<html lang="nl">
 <head>
-<title>AR.js A-Frame Location-based</title>
-<script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
-<script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'></script>
-<script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Touchscreen Kassaterminal</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            color: #1a1a1a;
+            margin: 0;
+            padding: 20px;
+            height: 100vh;
+        }
+        .header {
+            font-size: 48px;
+            font-weight: bold;
+            color: #ffc72c; /* NS Geel */
+            margin: 20px 0;
+        }
+        .button-container {
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 800px;
+            width: 100%;
+        }
+        .btn {
+            font-size: 28px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #002b7f; /* NS Blauw */
+            border: none;
+            padding: 20px;
+            cursor: pointer;
+            border-radius: 12px;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #001f5c;
+        }
+        .iframe-container {
+            margin-top: 20px;
+            border: 2px solid #002b7f;
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+    </style>
+    <script>
+        function toggleIframe() {
+            const iframeContainer = document.querySelector('.iframe-container');
+            if (iframeContainer.style.display === 'none' || iframeContainer.style.display === '') {
+                iframeContainer.style.display = 'block';
+            } else {
+                iframeContainer.style.display = 'none';
+            }
+        }
+    </script>
 </head>
-<script src="./script.js"></script>
 <body>
-<a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
-    <a-camera gps-new-camera='gpsMinDistance: 3'></a-camera>
-    <a-entity material='color: green' geometry='primitive: sphere' gps-new-entity-place="latitude: 52.0447107; longitude: 4.3372833" scale="10 10 10">
-        <a-text look-at="[gps-new-camera]" scale="" value="Home" align="center" text="Home"></a-text>
-    </a-entity>
-</a-scene>
+    <div class="header">
+        Kassaterminal
+    </div>
+
+    <div class="button-container">
+        <button class="btn">Nieuwe Transactie</button>
+        <button class="btn">Verkoop Annuleren</button>
+        <button class="btn">Betaling Verwerken</button>
+        <button class="btn">Bon Printen</button>
+        <button class="btn">Dagoverzicht</button>
+        <button class="btn" onclick="toggleIframe()">Fiets Reparatie</button>
+        <button class="btn">Instellingen</button>
+        <button class="btn">Afsluiten</button>
+    </div>
+    
+    <div class="iframe-container">
+        <iframe src="your-bike-repair-module-url" title="Fiets Reparatie Module" width="100%" height="100%"></iframe>
+    </div>
 </body>
 </html>
